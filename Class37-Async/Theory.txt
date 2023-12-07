@@ -1,0 +1,51 @@
+Async Javascript fundamentals:
+
+-JavaScript is synchronous(one by one), single threaded
+-Execution Context: 
+execute one line of code at a time, each operation waits for the last one
+to complete before executing.
+
+Blocking Code Vs Non Blocking Code:
+Block the flow of program - Does not block execution
+Read file sync - Read File Async
+
+JS Engine:
+Memory heap , Call Stack
+
+webApis: --> Are Superpowers and are not part of js actually..We get it in CallStack because of Global object through window(object)
+SetTimeout()
+console.log()
+DOM APIs
+fetch()
+LocalStorage
+Location
+
+Callback Queue-->  stores callback functions that are ready to be executed.
+EventLoop--> acts as a gatekeeper, constantly checking the call stack and the callback queue.
+console.log("Start")
+
+setTimeout(function cb() {
+    console.log('CallBack')
+}, 5000);
+
+console.log("End")
+
+Everything in Js Runs in CallStack. Callback Queue is important!
+
+Microtask Queue--> (all the callbacks coming from promises and mutation observers) 
+have higher priority to CallBack queue, and CBf (fetch) will go to it..
+
+CbT function will go in Callback Queue.
+console.log("Start");
+
+setTimeout(function cbT() {
+    console.log("CB SetTimeout")
+}, 500)
+
+fetch("https://api.netflix.com")
+    .then(function cbF() {
+        console.log("CB Netflix")
+    })
+
+console.log("End")
+
