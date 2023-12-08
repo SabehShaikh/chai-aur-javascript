@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        background-color: #212121;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>Chai aur JavaScript</h1>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button>
+</body>
+<script>
+
+    // only once
+
+    // const saySabeh = () => {
+    //     console.log("sabeh");
+    // }
+    // setTimeout(saySabeh, 3000)
+
+    //     setTimeout(() => {
+    // console.log("Sabeh");
+    //     },2000)
+
+    // continous
+    //     setInterval(() => {
+    //     },3000)
+    // console.log("Sabeh");
+
+    // const changeText = () => {
+    //     document.querySelector('h1').innerHTML = "best JS SERIES"
+    // }
+    // const changeMe = setTimeout(changeText, 2000)
+
+    // document.querySelector('#Stop').addEventListener("click", () => {
+    //     clearTimeout(changeMe)
+    //     console.log("STOPPED");
+    // })
+
+    /* Now set Interval */
+    const intervalId = setInterval(() => {
+        console.log("Sabeh", Date.now());
+    }, 1000)
+
+    clearInterval(intervalId)
+
+</script>
+
+</html>
