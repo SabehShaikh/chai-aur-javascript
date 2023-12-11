@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // function object bhi ha..
+    const multiplyBy5 = (num) => {
+        return num * 5
+    }
+
+    multiplyBy5.power = 2
+    console.log(multiplyBy5(5));
+    console.log(multiplyBy5.power);
+    console.log(multiplyBy5.prototype);
+
+    function createUser(username, score) {
+        this.username = username
+        this.score = score
+    }
+
+    createUser.prototype.increment = function () {
+        this.score++
+    }
+
+    createUser.prototype.printMe = function () {
+        console.log(`price is ${this.score}`);
+    }
+
+    const chai = new createUser("chai", 25)
+    const tea = new createUser("tea", 250)
+
+    chai.printMe()
+
+
+    /*
+    
+    Here's what happens behind the scenes when the new keyword is used:
+    
+    A new object is created: The new keyword initiates the creation of a new JavaScript object.
+    
+    A prototype is linked: The newly created object gets linked to the prototype property of the constructor function.
+    This means that it has access to properties and methods defined on the constructor's prototype.
+    
+    The constructor is called: The constructor function is called with the specified arguments and this is bound to the newly created object. If no explicit return value is specified from the constructor, JavaScript assumes this, the newly created object, to be the intended return value.
+    
+    The new object is returned: After the constructor function has been called, if it doesn't return a non-primitive value (object, array, function, etc.), the newly created object is returned.
+    
+    */
+
+    // Prototype-->
+
+    //    let myName = "Sabeh     "
+    //    let mychannel = "chai     "
+
+    //    console.log(myName.truelength);
+
+    let myHero = ["thor", "spiderman"]
+
+    let heroPower = {
+        thor: "hammer",
+        spiderman: "sling",
+
+        getSpiderPower: function () {
+            console.log(`spidey power is ${this.spiderman}`);
+        }
+    }
+
+    Object.prototype.sabeh = function () {
+        console.log(`sabeh is present in all object`);
+    }
+
+    Array.prototype.HeySabeh = function () {
+        console.log(`Sabeh says hello`);
+    }
+
+    heroPower.sabeh() // object got this property
+
+    myHero.sabeh() // array got it too
+
+    myHero.HeySabeh() // array k pas agaya
+    // heroPower.HeySabeh() // object k pas nh aya..
+
+    // inheritance:
+
+    const User = {
+        name: "chai",
+        email: "chai@goggle.com"
+    }
+
+    const Teacher = {
+        makeVideo: true
+    }
+
+    const TeachingSupport = {
+        isAvailable: false
+    }
+
+    const TAsupport = {
+        makeAssignment: 'JS Assignment',
+        FullTime: true,
+        __proto__: TeachingSupport // Inheriting properties from TeachingSupport
+    }
+    // Setting Teacher object's prototype to User, establishing inheritance
+    Teacher.__proto__ = User
+
+    // Accessing properties through inheritance
+    console.log(TAsupport.isAvailable); // Output: false (inherited from TeachingSupport)
+    console.log(Teacher.name); // Output: chai (inherited from User)
+
+    // modern syntax: taking Teacher value in TeachingSupport
+
+    Object.setPrototypeOf(TeachingSupport, Teacher)
+    console.log(TeachingSupport.makeVideo);
+
+
+    let anotherUsername = "chaiAurCode    ";
+    String.prototype.trueLength = function () {
+        console.log(`${this}`);
+        console.log(`True length is:  ${this.trim().length}`);
+    }
+
+    anotherUsername.trueLength()
+    "sabeh".trueLength()
+    "tea".trueLength()
+
+</script>
+
+</html>
